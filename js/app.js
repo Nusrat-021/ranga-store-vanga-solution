@@ -20,7 +20,8 @@ const showProducts = (products) => {
 
    const allProducts = products.slice(0, 10).map((pd) => pd);
    for (const product of allProducts) {
-      const image = product.images;
+      const image = product.image;
+      console.log(product)
       const div = document.createElement('div');
       div.classList.add('product');
       div.innerHTML = `<div class="single-product">
@@ -44,7 +45,7 @@ let count = 0;
 
 const addToCart = (id, price) => {
    count = count + 1;
-   updatePrice('price', value);
+   updatePrice('price', price);
 
    updateTaxAndCharge();
    document.getElementById('total-Products').innerText = count;
@@ -73,8 +74,8 @@ const getInputValue = (id) => {
 
 // main price update function
 const updatePrice = (id, value) => {
-   const convertedOldPrice = getInputValue(id);
-   const convertPrice = parseInt(value);
+   const convertedOldPrice = getInputValue(id); //0
+   const convertPrice = parseFloat(value); 
    const total = convertedOldPrice + convertPrice;
    document.getElementById(id).innerText = Math.round(total);
 };
